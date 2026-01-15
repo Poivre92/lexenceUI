@@ -1,0 +1,336 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 5rem;
+    /* Space for fixed header */
+    position: relative;
+    z-index: 2;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    /* Content above background */
+}
+
+/* Background Shapes */
+.hero-background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* overflow: hidden; Removed to ensure visibility */
+    z-index: -1;
+    /* Place behind everything in the section */
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    /* Reduced blur for better visibility */
+    opacity: 0.6;
+    /* Increased opacity */
+    animation: floatShape 20s infinite alternate ease-in-out;
+}
+
+.shape-1 {
+    width: 600px;
+    height: 600px;
+    background: var(--color-accent-gold);
+    top: -100px;
+    right: -100px;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--color-accent-lavender);
+    /* Mix with lavender for depth */
+    bottom: -100px;
+    left: -100px;
+    animation-delay: -5s;
+    opacity: 0.3;
+}
+
+.shape-3 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-accent-gold-vivid);
+    top: 40%;
+    right: 20%;
+    opacity: 0.2;
+    animation-delay: -10s;
+}
+
+@keyframes floatShape {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(30px, 50px) scale(1.1);
+    }
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
+    perspective: 1000px;
+    /* For character rotations */
+}
+
+.char {
+    display: inline-block;
+    transform-origin: center bottom;
+}
+
+.text-italic {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-primary);
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+}
+
+/* Platform Buttons */
+.hero-platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.platforms-label {
+    font-family: var(--font-sans);
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+.platform-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-platform {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background-color: var(--color-primary);
+    /* Theme Blue */
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    text-align: left;
+    min-width: 170px;
+    box-shadow: 0 4px 10px rgba(106, 123, 156, 0.3);
+    position: relative;
+    /* Needed for absolute positioning of the ray */
+    overflow: hidden;
+    /* Contains the ray */
+}
+
+/* Golden Ray Animation */
+.btn-platform::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.6), transparent);
+    /* Gold color with transparency */
+    transform: skewX(-25deg);
+    pointer-events: none;
+    animation: shine-ray 6s infinite;
+    /* Runs every 6 seconds */
+}
+
+@keyframes shine-ray {
+    0% {
+        left: -150%;
+    }
+
+    35% {
+        /* Increased from 15% to 35% to slow down the movement duration */
+        left: 200%;
+        /* Move continuously across */
+    }
+
+    100% {
+        left: 200%;
+        /* Stay off-screen for the rest of the cycle */
+    }
+}
+
+.btn-platform:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(197, 165, 114, 0.4);
+    background-color: var(--color-accent-gold);
+    color: var(--color-text-primary);
+}
+
+.btn-platform:hover .icon svg {
+    fill: var(--color-text-primary);
+}
+
+.btn-platform .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-platform .icon svg {
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+}
+
+.btn-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.1;
+}
+
+.btn-text .small {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 2px;
+}
+
+.btn-text .large {
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+}
+
+.hero-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* Continuous floating animation is applied to the wrapper */
+    animation: floatPhone 6s ease-in-out infinite;
+}
+
+/* Clay Mockup Styles */
+.hero-clay-mockup {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+
+    transform-origin: center center;
+    position: relative;
+    z-index: 10;
+
+    /* Technical fix for seamless integration */
+    mix-blend-mode: multiply;
+    filter: brightness(1.03) contrast(1.02);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s ease, mix-blend-mode 0.4s ease;
+
+    /* ... mask ... */
+    -webkit-mask-image: radial-gradient(ellipse closest-side, black 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse closest-side, black 60%, transparent 100%);
+
+    /* Interactive Hover Transition */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s ease;
+    cursor: pointer;
+}
+
+.hero-clay-mockup:hover {
+    /* Subtle rotation and lift for a more natural "hand-held" response */
+    transform: translateY(-10px) rotate(2.5deg) scale(1.02);
+    /* Increase brightness slightly and add a drop shadow to simulate increased height */
+    filter: brightness(1.03) contrast(1.02) drop-shadow(0 40px 60px rgba(0, 0, 0, 0.2));
+}
+
+[data-theme='dark'] .hero-clay-mockup {
+    mix-blend-mode: normal;
+    filter: brightness(1.1) contrast(1.05);
+}
+
+[data-theme='dark'] .hero-clay-mockup:hover {
+    filter: brightness(1.2) contrast(1.05) drop-shadow(0 40px 60px rgba(197, 165, 114, 0.2));
+}
+
+@keyframes floatPhone {
+    0% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(-1deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        margin: 0 auto 2rem;
+    }
+
+    .hero-platforms {
+        align-items: center;
+    }
+
+    .platform-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+
+}
+
+/* Typewriter Cursor */
+.typewriter-cursor {
+    display: inline-block;
+    color: var(--color-primary);
+    font-weight: 300;
+    margin-left: 2px;
+    animation: blinkCursor 1s step-end infinite;
+}
+
+@keyframes blinkCursor {
+
+    from,
+    to {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}

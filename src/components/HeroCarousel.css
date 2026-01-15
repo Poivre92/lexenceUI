@@ -1,0 +1,123 @@
+.hero-carousel-container {
+    position: relative;
+    width: 320px;
+    /* Base width of typical mobile view */
+    height: 650px;
+    /* Aspect ratio of modern phones */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animated background blob specifically for the carousel */
+.hero-blob-animated {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140%;
+    height: 100%;
+    background: radial-gradient(circle, var(--color-accent-gold) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: 0;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: pulseBlob 8s infinite alternate ease-in-out;
+}
+
+@keyframes pulseBlob {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+.carousel-frames {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    /* Let clicks pass through if needed, though mostly visual */
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+    z-index: 2;
+}
+
+/* Previous slide effect (optional, simple fade is often cleaner for mockups) */
+/* Previous slide effect (optional, simple fade is often cleaner for mockups) */
+.slide-image {
+    width: 100%;
+    height: 100%;
+    /* Cover specific dimensions */
+    object-fit: contain;
+    /* Ensure full mockup is visible */
+    border-radius: 44px;
+    /* Match phone mockup radius usually */
+    background: var(--slide-bg);
+    /* Simulate device frame seamlessly */
+    box-shadow:
+        0 30px 60px var(--slide-shadow, rgba(106, 123, 156, 0.25)),
+        /* Dynamic deep drop shadow */
+        0 10px 20px rgba(0, 0, 0, 0.05);
+    /* Soft ambient shadow */
+    box-sizing: border-box;
+    transition: background-color 0.8s ease, transform 0.5s ease, box-shadow 0.8s ease;
+}
+
+.carousel-slide.active .slide-image {
+    transform: scale(1.02);
+    /* Subtle pop when active */
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: -40px;
+    /* Place below the phone */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-text-secondary);
+    border: none;
+    opacity: 0.3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.dot.active {
+    opacity: 1;
+    background-color: var(--color-primary);
+    transform: scale(1.3);
+}

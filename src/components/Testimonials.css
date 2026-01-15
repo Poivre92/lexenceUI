@@ -1,0 +1,153 @@
+.testimonials-section {
+    background: linear-gradient(to bottom, transparent, var(--color-bg-secondary));
+    padding-bottom: var(--spacing-xl);
+    overflow: hidden;
+}
+
+.trust-label {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background: var(--color-bg-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    border: 1px solid rgba(197, 165, 114, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    font-weight: 500;
+}
+
+.carousel-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    /* Mask slides */
+}
+
+.testimonials-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+}
+
+.testimonial-slide {
+    width: 100%;
+    flex: 0 0 100%;
+    /* Force 100% width rigidly */
+    padding: 1rem;
+    box-sizing: border-box;
+    opacity: 1;
+    /* Force opacity to 1 */
+}
+
+.testimonial-card {
+    background: var(--color-bg);
+    padding: 3rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    position: relative;
+    border: 1px solid rgba(197, 165, 114, 0.1);
+}
+
+.quote-icon {
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--color-accent-lavender);
+    position: absolute;
+    top: -1rem;
+    left: 2rem;
+    opacity: 0.5;
+}
+
+.testimonial-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--color-text-primary);
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.author-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-text-primary);
+}
+
+.author-role {
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-bg-secondary);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.indicator.active {
+    background: var(--color-primary);
+    transform: scale(1.2);
+}
+
+.marketing-assurance {
+    font-family: var(--font-sans);
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .testimonial-text {
+        font-size: 1.1rem;
+    }
+
+    .trust-badges {
+        gap: 0.8rem;
+    }
+}

@@ -1,0 +1,101 @@
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.8s ease-out, visibility 0.8s;
+}
+
+/* Replicate paper texture on loading screen */
+.loading-screen::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/paper-texture.png');
+    background-repeat: repeat;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.loading-logo {
+    font-size: 3.5rem;
+    font-family: var(--font-serif);
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    animation: pulseLogo 2.5s infinite ease-in-out;
+}
+
+.loading-bar-container {
+    width: 180px;
+    height: 1px;
+    background-color: rgba(106, 123, 156, 0.1);
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.loading-bar {
+    height: 100%;
+    width: 0;
+    background-color: var(--color-primary);
+    animation: fillBar 1.5s ease-out forwards;
+}
+
+.loading-tagline {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+}
+
+@keyframes pulseLogo {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes fillBar {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .loading-logo {
+        font-size: 2.5rem;
+    }
+}

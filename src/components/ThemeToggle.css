@@ -1,0 +1,71 @@
+.theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle-track {
+    width: 52px;
+    height: 28px;
+    background: rgba(106, 123, 156, 0.1);
+    border-radius: 20px;
+    position: relative;
+    border: 1px solid rgba(106, 123, 156, 0.2);
+    transition: background 0.3s ease;
+}
+
+[data-theme='dark'] .theme-toggle-track {
+    background: rgba(197, 165, 114, 0.1);
+    border-color: rgba(197, 165, 114, 0.3);
+}
+
+.theme-toggle-thumb {
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle-thumb.dark {
+    left: 26px;
+    background: #C5A572;
+    /* Lexence Gold */
+    color: #0F172A;
+}
+
+.theme-toggle-thumb.light {
+    background: #6A7B9C;
+    /* Lexence Blue */
+    color: #fff;
+}
+
+.sun-icon,
+.moon-icon {
+    width: 14px;
+    height: 14px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .theme-toggle {
+        margin: 0 5px;
+    }
+}

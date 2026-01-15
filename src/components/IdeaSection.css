@@ -1,0 +1,228 @@
+.idea-section {
+    background-color: var(--color-bg);
+}
+
+.idea-mockup {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    border: 1px solid rgba(197, 168, 124, 0.2);
+    transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .idea-mockup {
+    background: var(--color-bg-secondary) !important;
+    border-color: rgba(197, 168, 124, 0.2);
+}
+
+.mockup-header {
+    margin-bottom: 2rem;
+    /* Border removed for seamless transition */
+    padding-bottom: 1rem;
+}
+
+.mockup-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    display: block;
+}
+
+.idea-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.idea-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+    background: var(--color-bg);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(197, 168, 124, 0.05);
+    transition: transform 0.2s ease;
+}
+
+[data-theme='dark'] .idea-item {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.idea-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.idea-title {
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.idea-status {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.status-en-cours {
+    background: rgba(33, 150, 243, 0.15);
+    color: #90caf9;
+}
+
+.status-a-l-etude {
+    background: rgba(156, 39, 176, 0.15);
+    color: #ce93d8;
+}
+
+.status-planifie {
+    background: rgba(76, 175, 80, 0.15);
+    color: #a5d6a7;
+}
+
+.idea-votes {
+    font-weight: 600;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: var(--color-bg-secondary);
+    width: 90%;
+    max-width: 500px;
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.modal-header h3 {
+    font-family: var(--font-serif);
+    margin: 0;
+    color: var(--color-text-primary);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: var(--color-primary);
+}
+
+.idea-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--color-text-primary);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(197, 168, 124, 0.1);
+}
+
+.modal-auth-prompt {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.modal-auth-prompt p {
+    margin-bottom: 1.5rem;
+    color: var(--color-text-secondary);
+}
+
+.loading-ideas,
+.no-ideas {
+    padding: 2rem;
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-style: italic;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

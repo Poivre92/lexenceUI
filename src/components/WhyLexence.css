@@ -1,0 +1,1064 @@
+.why-section {
+    background: linear-gradient(to bottom, transparent 0%, var(--color-bg) 150px, var(--color-bg) 100%);
+    position: relative;
+    z-index: 5;
+    padding: 10rem 0;
+}
+
+.why-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.why-label {
+    display: block;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.section-subtitle {
+    font-family: var(--font-sans);
+    color: var(--color-text-secondary);
+    font-size: 1.2rem;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Bento Grid Layout */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Balanced 3-column grid */
+    grid-template-rows: repeat(2, minmax(200px, auto));
+    gap: 1.5rem;
+}
+
+.bento-item {
+    display: flex;
+}
+
+/* ... existing card styles ... */
+
+/* Grid Specific Sizes */
+.bento-item.large {
+    grid-column: span 1;
+    /* First column */
+    grid-row: span 2;
+    /* Takes full height */
+}
+
+.bento-item.large .bento-title {
+    font-size: 1.8rem;
+}
+
+/* Standard/Small items just take 1 cell by default */
+.bento-item.standard,
+.bento-item.small {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/* Remove old specific sizes or map them safely if used elsewhere */
+.bento-item.medium {
+    grid-column: span 1;
+    /* Was span 2, now standard */
+}
+
+.bento-item.vertical {
+    grid-column: span 1;
+    grid-row: span 1;
+    /* Was span 2, now standard */
+}
+
+.bento-card {
+    background: var(--color-bg-secondary);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.bento-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.08);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* Frameless Cards (User Request) */
+.bento-card.is-frameless {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    /* Optional: might want to reduce padding if no border */
+}
+
+.bento-card.is-frameless:hover {
+    box-shadow: none;
+    transform: translateY(-10px);
+    /* Keep movement but no shadow */
+}
+
+/* Adjust padding for frameless content to breathe */
+.bento-card.is-frameless .bento-body {
+    padding: 1rem;
+}
+
+.bento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.bento-id {
+    font-family: var(--font-serif);
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    opacity: 0.5;
+    font-style: italic;
+}
+
+.bento-icon-wrapper {
+    font-size: 2.2rem;
+    opacity: 0.9;
+}
+
+.bento-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+}
+
+.icon-img {
+    width: 65px;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+[data-theme='dark'] .icon-img,
+[data-theme='dark'] .bento-statue-img,
+[data-theme='dark'] .bento-center-visual {
+    mix-blend-mode: normal;
+    filter: brightness(1.2) contrast(1.05);
+    /* Radical tightening for dark mode halos */
+    -webkit-mask-image: radial-gradient(circle at center, black 15%, transparent 65%) !important;
+    mask-image: radial-gradient(circle at center, black 15%, transparent 65%) !important;
+    opacity: 0.95;
+}
+
+/* Center Visual Style (new standard) */
+.bento-statue-img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 260px;
+    /* Reduced to ensure it fits without cropping */
+    object-fit: contain;
+    /* Shows full image centered */
+    display: block;
+    margin: 0 auto;
+    /* Center horizontal */
+
+    /* Effet d'intégration premium */
+    mix-blend-mode: multiply;
+    filter: brightness(1.02) contrast(1.05);
+
+    /* Masque radial doux */
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+    mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.6s ease;
+}
+
+.bento-center-visual {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    /* Ensure image isn't cropped/zoomed out of frame */
+    /* Centered in its container */
+    margin: 0 auto;
+    display: block;
+    transform: scale(1.1);
+
+    /* Premium Blending */
+    mix-blend-mode: multiply;
+    /* Stronger mask to hide rectangular borders by fading earlier */
+    -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
+    mask-image: radial-gradient(circle, black 30%, transparent 70%);
+
+    transition: transform 0.5s ease;
+}
+
+.bento-card:hover .bento-center-visual {
+    transform: scale(1.2) translateY(-5px);
+}
+
+.bento-text-content {
+    width: 100%;
+    text-align: center;
+    /* Enforce centering */
+    margin-top: auto;
+    /* Push to bottom if needed, though flex handles it */
+}
+
+/* Swipe Animation */
+.swipe-visual-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* Animation loop: Right, Center, Left, Center */
+    animation: swipe-hand-anim 4s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+@keyframes swipe-hand-anim {
+
+    0%,
+    15%,
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+
+    35% {
+        transform: translateX(25px) rotate(6deg);
+    }
+
+    60% {
+        transform: translateX(0) rotate(0deg);
+    }
+
+    85% {
+        transform: translateX(-25px) rotate(-6deg);
+    }
+}
+
+/* Grid Specific Sizes */
+.bento-item.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.bento-item.large .bento-title {
+    font-size: 1.8rem;
+}
+
+.bento-item.medium {
+    grid-column: span 2;
+}
+
+.bento-item.small {
+    grid-column: span 1;
+}
+
+.bento-item.vertical {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+/* Pop-up Styles */
+.bento-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-bg-secondary);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: scale(0.95);
+    z-index: 10;
+    padding: 2rem;
+    border-radius: 19px;
+    /* Slightly inner to match card border */
+    overflow-y: auto;
+    /* Allow scrolling if content is too tall on mobile */
+    scrollbar-width: none !important;
+    /* Firefox */
+    -ms-overflow-style: none !important;
+    /* IE and Edge */
+}
+
+.bento-popup::-webkit-scrollbar,
+.popup-content::-webkit-scrollbar,
+.mockup-layout::-webkit-scrollbar,
+.leitner-layout::-webkit-scrollbar,
+.swipe-layout::-webkit-scrollbar {
+    display: none !important;
+    /* Chrome, Safari and Opera */
+}
+
+.popup-content,
+.mockup-layout,
+.leitner-layout,
+.swipe-layout {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.bento-popup.with-mockup {
+    background: var(--color-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.bento-popup.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+.popup-content {
+    text-align: center;
+    transform: translateY(10px);
+    transition: transform 0.4s ease 0.1s;
+    /* Slight delay for content */
+}
+
+.bento-popup.active .popup-content {
+    transform: translateY(0);
+}
+
+/* Ensure popup content takes full space when it contains a mockup layout */
+.bento-popup.with-mockup .popup-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-icon {
+    font-size: 2.5rem;
+    /* Slightly smaller for better fit */
+    display: block;
+    margin-bottom: 0.8rem;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+}
+
+.popup-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.popup-text {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.mockup-layout,
+.leitner-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 2.5rem;
+    gap: 3rem;
+}
+
+/* Leitner Layout - Optimized for Standard Card (300px width approx) */
+.leitner-layout {
+    display: flex;
+    flex-direction: column;
+    /* Vertical stack for standard card */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    /* Reduced padding */
+    gap: 1rem;
+    /* Reduced gap */
+    background: transparent;
+}
+
+.leitner-visual-side {
+    flex: none;
+    width: 100%;
+    max-width: 200px;
+    /* Limit width */
+    height: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    /* Slightly reduced shadow */
+    background: transparent;
+    padding: 6px;
+    border: 1px solid rgba(197, 168, 124, 0.1);
+}
+
+.leitner-img {
+    width: 100%;
+    height: auto;
+    max-height: 140px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    border-radius: 6px;
+    /* Blend fix for different themes */
+    mix-blend-mode: multiply;
+}
+
+[data-theme='dark'] .leitner-img {
+    mix-blend-mode: screen;
+    /* In dark mode, if background is dark, screen works better for white-bg images */
+    filter: brightness(0.9) contrast(1.2);
+    /* For dark mode, mask it too to avoid edges */
+    -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);
+    mask-image: radial-gradient(circle, black 60%, transparent 100%);
+}
+
+.leitner-text-side {
+    flex: 1;
+    text-align: center;
+    /* Center text */
+    width: 100%;
+}
+
+.leitner-text-side .popup-title {
+    font-size: 1.2rem;
+    /* Reduced font size */
+    margin-bottom: 0.5rem;
+}
+
+.leitner-text-side .popup-text {
+    font-size: 0.9rem;
+    /* Reduced font size */
+    line-height: 1.4;
+    color: var(--color-text-secondary);
+}
+
+/* Swipe Layout - Optimized for vertical GIF */
+.swipe-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 2.5rem;
+    gap: 1rem;
+    background: transparent;
+}
+
+[data-theme='dark'] .swipe-gif {
+    mix-blend-mode: screen;
+    filter: brightness(0.8) contrast(1.1);
+    opacity: 0.85;
+}
+
+.swipe-visual-side {
+    flex: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.swipe-gif-container {
+    position: relative;
+    width: 120px;
+    /* Largeur ajustée pour tenir en hauteur */
+    height: 240px;
+    /* Ratio vertical respecté */
+    border-radius: 28px;
+    border: 5px solid #1a1a1a;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    background: #000;
+}
+
+.swipe-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swipe-overlay-hand {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    font-size: 2.2rem;
+    transform: translateX(-50%);
+    animation: swipeGesture 2.8s infinite ease-in-out;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes swipeGesture {
+    0% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translate(-50%, 0) scale(1.1);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translate(40px, -15px) scale(1.2);
+        opacity: 0.8;
+    }
+
+    75% {
+        transform: translate(-40px, -15px) scale(1.2);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 0;
+    }
+}
+
+.swipe-text-side {
+    flex: none;
+    text-align: center;
+    max-width: 400px;
+}
+
+.swipe-text-side .popup-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.swipe-text-side .popup-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+.leitner-visual-side {
+    flex: 1.2;
+    max-width: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    background: var(--color-bg);
+    padding: 8px;
+    border: 1px solid rgba(197, 168, 124, 0.1);
+}
+
+.leitner-img {
+    width: 100%;
+    height: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 6px;
+}
+
+.leitner-text-side {
+    flex: 1;
+    text-align: left;
+}
+
+.leitner-text-side .popup-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.leitner-text-side .popup-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 1024px) {
+    .leitner-layout {
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+
+    .leitner-visual-side {
+        max-width: 100%;
+    }
+
+    .leitner-text-side {
+        text-align: center;
+    }
+}
+
+.mockup-text-side {
+    flex: 1.2;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mockup-visual-side {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+    padding: 2rem 0;
+}
+
+.mockup-visual {
+    position: relative;
+    width: 100%;
+    max-width: 220px;
+    transform: translateY(40px) rotateY(15deg) rotateX(5deg);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.mockup-visual.active {
+    transform: translateY(0) rotateY(-5deg) rotateX(0);
+    opacity: 1;
+}
+
+.mockup-phone-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 18.5;
+    /* Modern phone aspect ratio */
+    background: #111;
+    border-radius: 36px;
+    padding: 10px;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.2),
+        0 0 0 2px rgba(212, 175, 55, 0.3);
+    overflow: hidden;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mockup-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 28px;
+    overflow: hidden;
+}
+
+.mockup-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.5s ease;
+}
+
+.mockup-visual.active .mockup-img {
+    transform: scale(1.05);
+}
+
+.mockup-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+    z-index: 1;
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 1s ease 0.3s;
+}
+
+.mockup-visual.active .mockup-glow {
+    opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    .mockup-layout {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .mockup-text-side {
+        text-align: center;
+        align-items: center;
+    }
+
+    .mockup-visual {
+        max-width: 140px;
+        transform: translateY(20px) rotateY(15deg) rotateX(5deg);
+    }
+
+    .mockup-visual-side {
+        height: auto;
+        padding: 0.5rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .mockup-visual {
+        max-width: 140px;
+        /* Bigger so we actually see the phone */
+        transform: none !important;
+        opacity: 1 !important;
+        margin: 20px auto 0;
+    }
+
+    .popup-content {
+        transform: none !important;
+        height: 100% !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .mockup-layout {
+        flex-direction: column !important;
+        padding: 2rem 1rem !important;
+        gap: 1.5rem !important;
+        justify-content: flex-start !important;
+        height: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .mockup-text-side,
+    .mockup-visual-side {
+        flex: none !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .mockup-text-side {
+        order: 1;
+    }
+
+    .mockup-visual-side {
+        order: 2;
+        padding: 0 !important;
+        height: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .mockup-text-side .popup-title {
+        font-size: 1.3rem !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    .mockup-text-side .popup-text {
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+        color: var(--color-text-secondary);
+    }
+
+    /* Force height for the first card to accommodate the absolute popup content */
+    .bento-item.large {
+        min-height: 700px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bento-item.large {
+        grid-row: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bento-item.large,
+    .bento-item.medium,
+    .bento-item.small {
+        grid-column: span 1;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    /* On mobile, maybe disable hover or make it tap based - for now hover is fine */
+    .bento-card {
+        padding: 1.5rem;
+        /* More space for content on small screens */
+    }
+}
+
+/* Memory Anchor Animation */
+.memory-anchor-visual {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+}
+
+.progress-track {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 250px;
+    margin-bottom: 1.5rem;
+}
+
+.track-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #f0f0f0;
+    transform: translateY(-50%);
+    z-index: 1;
+    border-radius: 2px;
+}
+
+.step-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #e5e7eb;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.4s ease;
+}
+
+/* Specific Colors per Step */
+.step-circle.step-1.active {
+    border-color: #F59E0B;
+    background-color: #FEF3C7;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+}
+
+.step-circle.step-1.active .step-dot {
+    background-color: #F59E0B;
+}
+
+.step-circle.step-2.active {
+    border-color: #3B82F6;
+    background-color: #DBEAFE;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.step-circle.step-2.active .step-dot {
+    background-color: #3B82F6;
+}
+
+.step-circle.step-3.active {
+    border-color: #8B5CF6;
+    background-color: #EDE9FE;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+}
+
+.step-circle.step-3.active .step-dot {
+    background-color: #8B5CF6;
+}
+
+.step-circle.step-4.active {
+    border-color: #10B981;
+    background-color: #D1FAE5;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+.step-circle.step-4.active .step-dot {
+    background-color: #10B981;
+}
+
+.validation-text {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* Swipe Layout */
+.swipe-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 1.5rem;
+    /* Reduced padding */
+    gap: 1rem;
+    /* Reduced gap */
+    background: #fffefb;
+}
+
+.swipe-visual-side {
+    flex: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.swipe-gif-container {
+    position: relative;
+    width: 150px;
+    /* Reduced width */
+    height: 310px;
+    /* Reduced height to fit text */
+    border-radius: 28px;
+    border: 5px solid #1a1a1a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background: #000;
+}
+
+.swipe-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Assure que tout le GIF est visible */
+    background: #000;
+}
+
+.swipe-overlay-hand {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    font-size: 2.5rem;
+    transform: translateX(-50%);
+    animation: swipeGesture 2.8s infinite ease-in-out;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes swipeGesture {
+    0% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translate(-50%, 0) scale(1.1);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translate(50px, -20px) scale(1);
+        opacity: 0.7;
+    }
+
+    75% {
+        transform: translate(-50px, -20px) scale(1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 0;
+    }
+}
+
+.swipe-text-side {
+    flex: none;
+    text-align: center;
+    max-width: 500px;
+}
+
+.swipe-text-side .popup-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+    color: var(--color-primary);
+}
+
+.swipe-text-side .popup-text {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+/* Modifying the card layout for the specific Leitner card */
+.bento-item.medium .bento-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.bento-content-top {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bento-content-bottom {
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+
+/* Ensure the title and description are centered for this specific card */
+.bento-item.medium .bento-title {
+    margin-bottom: 0.3rem;
+    color: var(--color-text-primary);
+}
+
+.bento-item.medium .bento-description {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+}

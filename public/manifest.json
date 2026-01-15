@@ -1,0 +1,23 @@
+{
+    "name": "Lexence - L'élégance du mot juste",
+    "short_name": "Lexence",
+    "description": "Enrichissez votre esprit avec le vocabulaire français rare et littéraire.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FDFBF7",
+    "theme_color": "#0F172A",
+    "icons": [
+        {
+            "src": "/images/logo_lexence_clean.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg",
+            "purpose": "any"
+        },
+        {
+            "src": "/images/logo_lexence.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg",
+            "purpose": "maskable"
+        }
+    ]
+}
