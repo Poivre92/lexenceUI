@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import pool from '@/lib/db';
 import { currentUser } from '@clerk/nextjs/server';
-import fs from 'fs';
-import path from 'path';
 
 const ADMIN_EMAIL = 'zapchoc92@gmail.com';
 
@@ -33,43 +31,35 @@ export async function GET(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
-    const logPath = path.join(process.cwd(), 'admin_debug.log');
-    const timestamp = new Date().toISOString();
-
     try {
-        fs.appendFileSync(logPath, `[${timestamp}] DELETE START\n`);
         const resolvedParams = await params;
         const id = resolvedParams.id;
-        fs.appendFileSync(logPath, `[${timestamp}] ID: ${id}\n`);
 
-        console.log(`[DEBUG] Method: DELETE, ID: ${id}`);
+        // Ce log est autorisé sur Vercel
+        console.log(`[DEBUG] Tentative de suppression - ID: ${id}`);
 
-        fs.appendFileSync(logPath, `[${timestamp}] Fetching User...\n`);
         const user = await currentUser();
         const emailList = user?.emailAddresses?.map(e => e.emailAddress) || [];
-        fs.appendFileSync(logPath, `[${timestamp}] Emails: ${JSON.stringify(emailList)}\n`);
 
         const isAdmin = emailList.some(email => email.toLowerCase() === ADMIN_EMAIL.toLowerCase());
-        fs.appendFileSync(logPath, `[${timestamp}] isAdmin: ${isAdmin}\n`);
 
         if (!isAdmin) {
-            fs.appendFileSync(logPath, `[${timestamp}] 403 Forbidden\n`);
+            console.log(`[AUTH] Accès refusé pour : ${emailList.join(', ')}`);
             return NextResponse.json({ error: 'Non autorisé' }, { status: 403 });
         }
 
-        fs.appendFileSync(logPath, `[${timestamp}] Deleting associated votes and comments...\n`);
+        // Suppression en base de données
         await pool.query('DELETE FROM votes WHERE idea_id = $1', [id]);
         await pool.query('DELETE FROM comments WHERE idea_id = $1', [id]);
-
-        fs.appendFileSync(logPath, `[${timestamp}] Deleting idea from DB...\n`);
+        
         const result = await pool.query('DELETE FROM ideas WHERE id = $1', [id]);
-        fs.appendFileSync(logPath, `[${timestamp}] Deleted rows: ${result.rowCount}\n`);
+        
+        console.log(`[SUCCESS] Idée ${id} supprimée. Lignes affectées : ${result.rowCount}`);
 
         return NextResponse.json({ message: 'Supprimé avec succès' });
     } catch (error) {
-        const errorMsg = `[${timestamp}] ERROR: ${error.message}\n${error.stack}\n`;
-        fs.appendFileSync(logPath, errorMsg);
-        console.error('[CRITICAL]', error);
+        // console.error est également autorisé et recommandé sur Vercel
+        console.error('[CRITICAL ERROR]', error);
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
